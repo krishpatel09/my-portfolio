@@ -1,103 +1,100 @@
 "use client";
 
+import {
+  ArrowRight,
+  Copy,
+  ChevronDown,
+  FileText,
+  MousePointerClick,
+} from "lucide-react";
+import React from "react";
 import { motion } from "framer-motion";
-import { Wifi, MapPin, Terminal, Cpu } from "lucide-react";
+import FloatingBubbles from "./FloatingBubbles";
 
 export default function Hero() {
-  const text = "Full-Stack Developer".split(" ");
-
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center px-4 md:px-20 max-w-7xl mx-auto overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center px-6 md:px-20 max-w-7xl mx-auto bg-transparent relative overflow-hidden pt-32 pb-20"
     >
-      {/* Floating Status Card */}
+      <FloatingBubbles count={40} />
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-        className="absolute top-10 right-4 md:right-10 w-fit"
-      ></motion.div>
+        transition={{ duration: 0.8 }}
+        className="text-center space-y-2 max-w-4xl relative z-10 mt-10"
+      >
+        <p className="text-slate-500 font-bold tracking-widest text-lg uppercase">
+          Hey, I'm
+        </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-20">
-        <div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="flex items-center gap-2 mb-6 text-[#6366F1] font-mono text-sm tracking-widest uppercase"
-          ></motion.div>
+        <h1 className="text-6xl md:text-7xl font-black text-white tracking-tighter uppercase pb-4">
+          KRISH SANGANI
+        </h1>
 
-          <div className="overflow-hidden">
-            <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-white leading-[1.1]">
-              {text.map((el, i) => (
-                <motion.span
-                  initial={{ opacity: 0, y: 100 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: i * 0.2,
-                    ease: [0.2, 0.65, 0.3, 0.9],
-                  }}
-                  key={i}
-                  className="inline-block mr-4"
-                >
-                  {el}
-                </motion.span>
-              ))}
-            </h1>
-          </div>
+        <div className="inline-block px-6 py-2 bg-primary rounded-full text-white font-black text-lg shadow-[0_0_30px_rgba(255,51,51,0.4)] mb-12">
+          Full Stack Developer
+        </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="mt-8 text-lg text-white/60 max-w-xl leading-relaxed"
-          >
-            Building high-performance web applications with modern technologies.
-            Turning complex challenges into elegant, scalable solutions.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.4 }}
-            className="mt-10 flex gap-4"
-          >
-            <button className="px-8 py-3 bg-[#6366F1] text-white rounded-full font-medium hover:bg-[#4F46E5] transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(99,102,241,0.3)]">
-              View Work
-            </button>
-            <button className="px-8 py-3 bg-white/5 text-white border border-white/10 rounded-full font-medium hover:bg-white/10 transition-all">
-              Contact Me
-            </button>
-          </motion.div>
+        <div className="space-y-4 pt-4">
+          <p className="text-slate-400 font-medium text-2xl md:text-3xl tracking-tight">
+            Crafting seamless journeys from
+          </p>
+          <p className="text-white/90 text-3xl md:text-4xl font-medium tracking-tight">
+            <span className="text-primary italic font-serif">
+              pixel-perfect
+            </span>{" "}
+            frontends to
+            <span className="text-primary italic font-serif"> robust</span>{" "}
+            backends
+          </p>
         </div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.8, duration: 1 }}
-          className="relative hidden lg:flex items-center justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="flex flex-col md:flex-row items-center justify-center gap-10 pt-16"
         >
-          <div className="relative w-96 h-96">
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#6366F1]/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
-            <div className="relative z-10 glass-card w-full h-full rounded-3xl border border-white/10 bg-white/5 overflow-hidden flex items-center justify-center group">
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')] bg-cover bg-center opacity-40 mix-blend-overlay group-hover:scale-110 transition-transform duration-700"></div>
-              <Cpu
-                size={80}
-                className="text-white/20 group-hover:text-[#6366F1] transition-colors duration-500"
-              />
-            </div>
+          <div className="flex flex-wrap items-center justify-center gap-8">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-red-500 text-white rounded-xl text-sm font-medium shadow-lg shadow-red-500/25 transition-all duration-300 group"
+            >
+              Let's Connect
+              <MousePointerClick className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </motion.button>
 
-            {/* Floating Elements */}
-            <motion.div
-              animate={{ y: [0, -20, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -top-10 -right-10 glass-card p-4 rounded-xl border border-white/10 bg-black/40 backdrop-blur-md"
-            ></motion.div>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-slate-900 text-slate-300 border border-slate-800 rounded-2xl font-bold text-lg hover:border-primary/30 transition-all flex items-center gap-2 group"
+            >
+              <FileText className="w-5 h-5 text-slate-500 group-hover:text-primary transition-colors" />
+              Resume
+            </motion.button>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
+
+      {/* Horizon Glow */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0.5, 0.8, 0.5] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-0 left-0 right-0 h-96 bg-horizon-glow pointer-events-none"
+      />
+
+      {/* Bottom Decoration */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce z-10"
+      >
+        <ChevronDown className="w-6 h-6 text-slate-600" />
+      </motion.div>
     </section>
   );
 }

@@ -24,12 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen relative selection:bg-[#6366F1]/30 selection:text-[#6366F1]`}
       >
         <BackgroundNoise />
-        <main className="relative z-10 pb-32">{children}</main>
+        <main className="relative z-10">{children}</main>
       </body>
     </html>
   );

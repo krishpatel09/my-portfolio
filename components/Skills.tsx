@@ -1,11 +1,30 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Cloud, Code2 } from "lucide-react";
 import Image from "next/image";
+import FloatingBubbles from "./FloatingBubbles";
 
 const skillCategories = [
   {
-    title: "LANGUAGES & FRAMEWORKS",
+    title: "Languages",
+    skills: [
+      {
+        name: "JavaScript",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+      },
+      {
+        name: "TypeScript",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      },
+      {
+        name: "SQL",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+      },
+    ],
+  },
+  {
+    title: "Frameworks & Libraries",
     skills: [
       {
         name: "React",
@@ -16,45 +35,49 @@ const skillCategories = [
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
       },
       {
-        name: "Nest.js",
+        name: "NestJS",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg",
-      },
-      {
-        name: "Express",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
       },
       {
         name: "Node.js",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
       },
       {
-        name: "TypeScript",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+        name: "Express",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
       },
       {
-        name: "JavaScript",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+        name: "Tailwind CSS",
+        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg",
+      },
+      {
+        name: "Shadcn/ui",
+        icon: "https://cdn.simpleicons.org/shadcnui/white",
+      },
+      {
+        name: "MUI",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/materialui/materialui-original.svg",
       },
     ],
   },
   {
-    title: "DATABASES",
+    title: "Databases",
     skills: [
       {
         name: "MySQL",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
       },
       {
+        name: "MongoDB",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+      },
+      {
         name: "PostgreSQL",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
       },
       {
-        name: "Firebase",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
-      },
-      {
         name: "Supabase",
-        icon: "https://raw.githubusercontent.com/supabase/supabase/master/packages/common/assets/images/supabase-logo-icon.svg",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg",
       },
       {
         name: "Redis",
@@ -63,22 +86,7 @@ const skillCategories = [
     ],
   },
   {
-    title: "AI INTEGRATION",
-    skills: [
-      { name: "OpenAI", icon: "/skills/openai.svg" },
-      {
-        name: "LangChain",
-        icon: "https://raw.githubusercontent.com/langchain-ai/langchain/master/docs/static/img/langchain_logo.png",
-      },
-      {
-        name: "Vertex AI",
-        icon: "https://www.gstatic.com/lamda/images/favicon_v2_711f26f2a24ec9d936ca.png",
-      }, // Generic AI placeholder if exact vertex not found
-      { name: "Lovable", icon: "https://lovable.dev/favicon.ico" },
-    ],
-  },
-  {
-    title: "TOOLS & DEVOPS",
+    title: "Tools & Platforms",
     skills: [
       {
         name: "Git",
@@ -86,101 +94,115 @@ const skillCategories = [
       },
       {
         name: "GitHub",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-      },
-      {
-        name: "GitLab",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg",
-      },
-      {
-        name: "AWS",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
-      },
-      {
-        name: "Vercel",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vercel/vercel-original.svg",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
       },
       {
         name: "GitHub Actions",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg",
       },
       {
         name: "Docker",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
       },
       {
-        name: "Stripe",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/svelte/svelte-original.svg",
-      }, // Placeholder for stripe or specific icon
+        name: "Vercel",
+        icon: "https://cdn.simpleicons.org/vercel/white",
+      },
     ],
   },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="min-h-screen py-24 px-6 relative bg-white">
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section
+      id="skills"
+      className="py-24 px-6 relative bg-transparent overflow-hidden"
+    >
+      <FloatingBubbles count={30} />
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20 space-y-4"
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-            Technical Skills
+          <h2 className="text-5xl font-black text-white tracking-tight">
+            Skills & Expertise<span className="text-primary">.</span>
           </h2>
-          <div className="h-1.5 w-24 bg-slate-900 mx-auto rounded-full mb-8" />
-          <p className="text-slate-500 text-lg md:text-xl font-medium max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise and proficiency
-            levels.
+          <p className="text-slate-500 text-lg font-medium tracking-wide">
+            A collection of technologies I'm proficient with, from languages to
+            frameworks and tools
           </p>
         </motion.div>
 
-        <div className="flex flex-col gap-16 items-center">
+        <div className="grid grid-cols-1 gap-16">
           {skillCategories.map((category, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              className="w-full text-center"
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.6 }}
+              className="space-y-8"
             >
-              <h3 className="text-sm font-bold text-slate-900 tracking-[0.2em] mb-10 flex items-center justify-center gap-4">
+              <h3 className="text-xl font-bold text-white tracking-tight flex items-center gap-4">
                 {category.title}
+                <div className="h-px bg-slate-800 flex-1"></div>
               </h3>
 
-              <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+              <div className="flex flex-wrap gap-4">
                 {category.skills.map((skill, i) => (
-                  <SkillTag key={i} icon={skill.icon} name={skill.name} />
+                  <SkillTag
+                    key={i}
+                    icon={skill.icon}
+                    name={skill.name}
+                    index={i}
+                  />
                 ))}
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
     </section>
   );
 }
 
-function SkillTag({ icon, name }: { icon: string; name: string }) {
+function SkillTag({
+  icon,
+  name,
+  index,
+}: {
+  icon: any; // Can be string (URL) or ReactNode
+  name: string;
+  index: number;
+}) {
+  const isUrl = typeof icon === "string";
+
   return (
     <motion.div
-      whileHover={{ y: -5 }}
-      className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all cursor-default group whitespace-nowrap"
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.05, duration: 0.3 }}
+      className="flex items-center gap-4 px-6 py-3 rounded-2xl bg-black/40 border border-white/10 transition-all cursor-default backdrop-blur-sm"
     >
-      <div className="relative w-6 h-6 flex items-center justify-center">
-        <Image
-          src={icon}
-          alt={name}
-          width={24}
-          height={24}
-          className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-          unoptimized
-        />
+      <div className="shrink-0 w-8 h-8 flex items-center justify-center">
+        {isUrl ? (
+          <img
+            src={icon}
+            alt={`${name} icon`}
+            className="w-full h-full object-contain transition-all duration-300"
+          />
+        ) : (
+          <div className="text-slate-400">{icon}</div>
+        )}
       </div>
-      <span className="text-base font-semibold text-slate-600 group-hover:text-slate-900 transition-colors">
-        {name}
-      </span>
+      <span className="text-sm font-bold text-slate-400">{name}</span>
     </motion.div>
   );
 }
