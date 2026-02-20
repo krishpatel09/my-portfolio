@@ -3,114 +3,184 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const skills = [
-  { name: "React", icon: "/skills/react.svg" },
-  { name: "Next.js", icon: "/skills/nextdotjs.svg" },
-  { name: "Tailwind CSS", icon: "/skills/tailwindcss.svg" },
-  { name: "Framer Motion", icon: "/skills/framer.svg" },
-  { name: "Node.js", icon: "/skills/nodedotjs.svg" },
-  { name: "NestJS", icon: "/skills/nestjs.svg" },
-  { name: "Express", icon: "/skills/express.svg" },
-  { name: "PostgreSQL", icon: "/skills/postgresql.svg" },
-  { name: "MongoDB", icon: "/skills/mongodb.svg" },
-  { name: "Prisma", icon: "/skills/prisma.svg" },
-  { name: "Git", icon: "/skills/git.svg" },
-  { name: "Docker", icon: "/skills/docker.svg" },
-  { name: "Linux", icon: "/skills/linux.svg" },
-  { name: "System Design", icon: "/skills/excalidraw.svg" },
-  { name: "AI Integration", icon: "/skills/openai.svg" },
-  { name: "Mobile", icon: "/skills/android.svg" },
-  { name: "UI/UX", icon: "/skills/figma.svg" },
+const skillCategories = [
+  {
+    title: "LANGUAGES & FRAMEWORKS",
+    skills: [
+      {
+        name: "React",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      },
+      {
+        name: "Next.js",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+      },
+      {
+        name: "Nest.js",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg",
+      },
+      {
+        name: "Express",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+      },
+      {
+        name: "Node.js",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+      },
+      {
+        name: "TypeScript",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      },
+      {
+        name: "JavaScript",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      },
+    ],
+  },
+  {
+    title: "DATABASES",
+    skills: [
+      {
+        name: "MySQL",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      },
+      {
+        name: "PostgreSQL",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      },
+      {
+        name: "Firebase",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+      },
+      {
+        name: "Supabase",
+        icon: "https://raw.githubusercontent.com/supabase/supabase/master/packages/common/assets/images/supabase-logo-icon.svg",
+      },
+      {
+        name: "Redis",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+      },
+    ],
+  },
+  {
+    title: "AI INTEGRATION",
+    skills: [
+      { name: "OpenAI", icon: "/skills/openai.svg" },
+      {
+        name: "LangChain",
+        icon: "https://raw.githubusercontent.com/langchain-ai/langchain/master/docs/static/img/langchain_logo.png",
+      },
+      {
+        name: "Vertex AI",
+        icon: "https://www.gstatic.com/lamda/images/favicon_v2_711f26f2a24ec9d936ca.png",
+      }, // Generic AI placeholder if exact vertex not found
+      { name: "Lovable", icon: "https://lovable.dev/favicon.ico" },
+    ],
+  },
+  {
+    title: "TOOLS & DEVOPS",
+    skills: [
+      {
+        name: "Git",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+      },
+      {
+        name: "GitHub",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+      },
+      {
+        name: "GitLab",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg",
+      },
+      {
+        name: "AWS",
+        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+      },
+      {
+        name: "Vercel",
+        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vercel/vercel-original.svg",
+      },
+      {
+        name: "GitHub Actions",
+        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg",
+      },
+      {
+        name: "Docker",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+      },
+      {
+        name: "Stripe",
+        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/svelte/svelte-original.svg",
+      }, // Placeholder for stripe or specific icon
+    ],
+  },
 ];
 
 export default function Skills() {
   return (
-    <section
-      id="skills"
-      className="min-h-screen flex flex-col justify-center py-20 px-0 overflow-hidden relative"
-    >
-      {/* Background Gradient similar to reference */}
-      <div className="absolute inset-0 bg-[#0B0C10] z-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#6366F1]/20 rounded-full blur-[100px]"></div>
-      </div>
-
-      <div className="relative z-10">
-        <motion.h2
+    <section id="skills" className="min-h-screen py-24 px-6 relative bg-white">
+      <div className="max-w-6xl mx-auto relative z-10">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-5xl font-bold text-center text-white mb-20 tracking-tight"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
         >
-          My <span className="text-[#6366F1]">Skills</span>
-        </motion.h2>
+          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
+            Technical Skills
+          </h2>
+          <div className="h-1.5 w-24 bg-slate-900 mx-auto rounded-full mb-8" />
+          <p className="text-slate-500 text-lg md:text-xl font-medium max-w-2xl mx-auto">
+            A comprehensive overview of my technical expertise and proficiency
+            levels.
+          </p>
+        </motion.div>
 
-        <div className="flex flex-col gap-10">
-          {/* Row 1 */}
-          <Marquee direction="left" speed={100}>
-            {skills.map((skill, i) => (
-              <SkillTag key={i} icon={skill.icon} name={skill.name} />
-            ))}
-          </Marquee>
+        <div className="flex flex-col gap-16 items-center">
+          {skillCategories.map((category, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              className="w-full text-center"
+            >
+              <h3 className="text-sm font-bold text-slate-900 tracking-[0.2em] mb-10 flex items-center justify-center gap-4">
+                {category.title}
+              </h3>
 
-          {/* Row 2 */}
-          <Marquee direction="right" speed={100}>
-            {/* Reversed or reshuffled for variety */}
-            {[...skills].reverse().map((skill, i) => (
-              <SkillTag key={i} icon={skill.icon} name={skill.name} />
-            ))}
-          </Marquee>
-
-          {/* Row 3 (Optional for density) */}
-          <Marquee direction="left" speed={110}>
-            {[...skills]
-              .sort(() => Math.random() - 0.5)
-              .map((skill, i) => (
-                <SkillTag key={i} icon={skill.icon} name={skill.name} />
-              ))}
-          </Marquee>
+              <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+                {category.skills.map((skill, i) => (
+                  <SkillTag key={i} icon={skill.icon} name={skill.name} />
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-function Marquee({
-  children,
-  direction = "left",
-  speed = 20,
-}: {
-  children: React.ReactNode;
-  direction?: "left" | "right";
-  speed?: number;
-}) {
-  return (
-    <div className="flex overflow-hidden w-full mask-gradient">
-      <motion.div
-        initial={{ x: direction === "left" ? 0 : "-50%" }}
-        animate={{ x: direction === "left" ? "-50%" : 0 }}
-        transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
-        className="flex gap-10 flex-shrink-0 px-5"
-      >
-        {children}
-        {children}
-      </motion.div>
-    </div>
-  );
-}
-
 function SkillTag({ icon, name }: { icon: string; name: string }) {
   return (
-    <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 hover:border-[#6366F1]/50 transition-all cursor-default group whitespace-nowrap">
-      <div className="relative w-6 h-6">
+    <motion.div
+      whileHover={{ y: -5 }}
+      className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all cursor-default group whitespace-nowrap"
+    >
+      <div className="relative w-6 h-6 flex items-center justify-center">
         <Image
           src={icon}
           alt={name}
-          fill
-          className="object-contain opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 pointer-events-none"
+          width={24}
+          height={24}
+          className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+          unoptimized
         />
       </div>
-      <span className="text-lg font-medium text-white/80 group-hover:text-white transition-colors">
+      <span className="text-base font-semibold text-slate-600 group-hover:text-slate-900 transition-colors">
         {name}
       </span>
-    </div>
+    </motion.div>
   );
 }

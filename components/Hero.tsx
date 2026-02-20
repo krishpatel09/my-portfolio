@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Wifi, MapPin, Terminal, Cpu } from "lucide-react";
 
 export default function Hero() {
-  const text = "Creative. Engineer. Alchemist.".split(" ");
+  const text = "Full-Stack Developer".split(" ");
 
   return (
     <section
@@ -54,11 +54,8 @@ export default function Hero() {
             transition={{ delay: 1, duration: 0.8 }}
             className="mt-8 text-lg text-white/60 max-w-xl leading-relaxed"
           >
-            Building digital experiences that blend high-end aesthetics with
-            robust engineering. Specializing in{" "}
-            <span className="text-[#6366F1]">Next.js</span>,{" "}
-            <span className="text-white">NestJS</span>, and interactive
-            storytelling.
+            Building high-performance web applications with modern technologies.
+            Turning complex challenges into elegant, scalable solutions.
           </motion.p>
 
           <motion.div
@@ -98,21 +95,6 @@ export default function Hero() {
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
               className="absolute -top-10 -right-10 glass-card p-4 rounded-xl border border-white/10 bg-black/40 backdrop-blur-md"
             ></motion.div>
-
-            <motion.div
-              animate={{ y: [0, 20, 0] }}
-              transition={{
-                repeat: Infinity,
-                duration: 5,
-                ease: "easeInOut",
-                delay: 1,
-              }}
-              className="absolute -bottom-10 -left-10 glass-card p-4 rounded-xl border border-white/10 bg-black/40 backdrop-blur-md"
-            >
-              <div className="font-mono text-xs text-emerald-400">
-                99.9% Uptime
-              </div>
-            </motion.div>
           </div>
         </motion.div>
       </div>

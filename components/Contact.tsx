@@ -60,10 +60,10 @@ export default function Contact() {
                     Email Me
                   </h4>
                   <a
-                    href="mailto:yashthesiya72@gmail.com"
+                    href="mailto:krishpatel6343@gmail.com"
                     className="text-white font-medium hover:text-purple-400 transition-colors"
                   >
-                    yashthesiya72@gmail.com
+                    krishpatel6343@gmail.com
                   </a>
                 </div>
               </div>
@@ -94,12 +94,12 @@ export default function Contact() {
                     LinkedIn
                   </h4>
                   <a
-                    href="https://linkedin.com/in/yash-thesiya"
+                    href="https://linkedin.com/in/krishpatel09"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white font-medium hover:text-pink-400 transition-colors"
                   >
-                    /in/yash-thesiya
+                    /in/krishpatel09
                   </a>
                 </div>
               </div>
