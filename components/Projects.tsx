@@ -11,7 +11,6 @@ import {
   Users,
   Package,
 } from "lucide-react";
-import FloatingBubbles from "./FloatingBubbles";
 
 export default function Projects() {
   return (
@@ -19,7 +18,6 @@ export default function Projects() {
       id="projects"
       className="py-24 px-6 relative bg-transparent overflow-hidden"
     >
-      <FloatingBubbles count={40} />
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-20 space-y-4">
           <h2 className="text-5xl font-black text-white tracking-tight">

@@ -1,16 +1,68 @@
 "use client";
 
-import { Mail, Linkedin, Send, Github } from "lucide-react";
-import React, { cloneElement, ReactElement } from "react";
+import { Mail, Linkedin, Send, Github, Loader2 } from "lucide-react";
+import React, { ReactElement, useState } from "react";
 import FloatingBubbles from "./FloatingBubbles";
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus({ type: null, message: "" });
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+    console.log(data);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setStatus({
+          type: "success",
+          message: "Thank You for Contacting Me 🚀",
+        });
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setStatus({
+          type: "error",
+          message: result.error || "Something went wrong.",
+        });
+      }
+    } catch (err) {
+      setStatus({
+        type: "error",
+        message: "Failed to connect to the server.",
+      });
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => {
+        setStatus({ type: null, message: "" });
+      }, 3000);
+    }
+  };
+
   return (
     <section
       id="contact"
       className="pt-24 pb-12 px-6 relative bg-transparent overflow-hidden"
     >
-      <FloatingBubbles count={20} />
       <div className="max-w-6xl mx-auto w-full relative z-10">
         {/* Header */}
         <div className="text-center mb-20 space-y-4">
@@ -65,13 +117,15 @@ export default function Contact() {
               Send a Message
             </h3>
 
-            <form className="space-y-8 relative z-10">
+            <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-3">
                   <label className="text-[10px] font-bold text-slate-500 ml-1 uppercase tracking-[0.2em]">
                     Name
                   </label>
                   <input
+                    name="name"
+                    required
                     type="text"
                     placeholder="Your Name"
                     className="w-full bg-slate-950/50 border border-slate-800 rounded-2xl px-6 py-4 text-white placeholder-slate-700 focus:outline-none focus:border-primary/50 transition-all font-medium"
@@ -82,6 +136,8 @@ export default function Contact() {
                     Email
                   </label>
                   <input
+                    name="email"
+                    required
                     type="email"
                     placeholder="your@email.com"
                     className="w-full bg-slate-950/50 border border-slate-800 rounded-2xl px-6 py-4 text-white placeholder-slate-700 focus:outline-none focus:border-primary/50 transition-all font-medium"
@@ -94,18 +150,42 @@ export default function Contact() {
                   Message
                 </label>
                 <textarea
+                  name="message"
+                  required
                   rows={4}
                   placeholder="How can I help you?"
                   className="w-full bg-slate-950/50 border border-slate-800 rounded-2xl px-6 py-4 text-white placeholder-slate-700 focus:outline-none focus:border-primary/50 transition-all resize-none font-medium"
                 />
               </div>
 
+              {status.type && (
+                <div
+                  className={`p-4 rounded-xl text-sm font-bold ${
+                    status.type === "success"
+                      ? "bg-green-500/10 text-green-500 border border-green-500/20"
+                      : "bg-primary/10 text-primary border border-primary/20"
+                  }`}
+                >
+                  {status.message}
+                </div>
+              )}
+
               <button
+                disabled={isSubmitting}
                 type="submit"
-                className="w-full py-5 bg-primary text-white rounded-2xl font-black text-xl hover:bg-primary/90 transition-all flex items-center justify-center gap-3 group shadow-[0_0_30px_rgba(255,51,51,0.2)]"
+                className="w-full py-5 bg-primary text-white rounded-2xl font-black text-xl hover:bg-primary/90 transition-all flex items-center justify-center gap-3 group shadow-[0_0_30px_rgba(255,51,51,0.2)] disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
-                <Send className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                {isSubmitting ? (
+                  <>
+                    Sending...
+                    <Loader2 className="w-6 h-6 animate-spin" />
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
               </button>
             </form>
 
@@ -137,7 +217,9 @@ function ContactLink({
       className="group flex items-center gap-6 p-6 rounded-4xl bg-slate-900/40 border border-slate-800/50 hover:border-primary/20 hover:bg-slate-900/60 transition-all"
     >
       <div className="p-4 rounded-xl bg-slate-950/50 text-slate-400 group-hover:text-primary border border-slate-800 group-hover:border-primary/20 transition-all">
-        {cloneElement(icon as ReactElement<{ size: number }>, { size: 20 })}
+        {React.cloneElement(icon as ReactElement<{ size: number }>, {
+          size: 20,
+        })}
       </div>
       <div>
         <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">

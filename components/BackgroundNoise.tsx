@@ -2,7 +2,7 @@
 
 export default function BackgroundNoise() {
   return (
-    <div className="pointer-events-none fixed inset-0 z-[50] opacity-[0.03] mix-blend-overlay">
+    <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.03] mix-blend-overlay">
       <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
         <filter id="noiseFilter">
           <feTurbulence

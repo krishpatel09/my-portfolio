@@ -72,36 +72,80 @@ body {
 }
 
 /* Elite Background Effects */
-.bg-horizon-glow {
-  background: linear-gradient(to top, rgba(255, 51, 51, 0.2) 0%, rgba(255, 51, 51, 0) 60%);
+.hero-horizon-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40vh;
+  background: 
+    radial-gradient(100% 60% at 50% 100%, rgba(239, 68, 68, 0.35), transparent 70%), 
+    radial-gradient(80% 40% at 50% 100%, rgba(249, 115, 22, 0.2), transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(40px);
 }
 
+.red-glow-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 40vh;
+  background: radial-gradient(circle, rgba(255, 51, 51, 0.08) 0%, transparent 70%);
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Premium Particle Effects */
 .bubble {
   position: absolute;
-  background: white;
   border-radius: 50%;
   pointer-events: none;
   filter: blur(0.5px);
-  box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+  will-change: transform, opacity;
 }
 
-@keyframes bubble-up {
+.particle-star {
+  background: #ffffff;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+.particle-glow {
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.particle-accent {
+  background: var(--primary);
+  box-shadow: 0 0 8px rgba(255, 51, 51, 0.6);
+}
+
+@keyframes drifting-up {
   0% {
-    transform: translateY(100vh) scale(0);
+    transform: translateY(100vh) translateX(0) scale(0);
     opacity: 0;
   }
-  20% {
-    opacity: 0.5;
-    transform: translateY(80vh) scale(1);
+  15% {
+    opacity: 1;
+    transform: translateY(80vh) translateX(10px) scale(1);
+  }
+  40% {
+    transform: translateY(40vh) translateX(-15px) scale(1.1);
+  }
+  70% {
+    transform: translateY(0vh) translateX(10px) scale(1);
   }
   100% {
-    transform: translateY(-20vh) scale(0.5);
+    transform: translateY(-20vh) translateX(-5px) scale(0.8);
     opacity: 0;
   }
 }
 
 .animate-bubble {
-  animation: bubble-up 15s linear infinite;
+  animation: drifting-up var(--duration) linear infinite;
 }
 
 .text-gradient-red {

@@ -2,14 +2,13 @@
 
 import {
   ArrowRight,
-  Copy,
-  ChevronDown,
   FileText,
+  ChevronDown,
   MousePointerClick,
 } from "lucide-react";
 import React from "react";
 import { motion } from "framer-motion";
-import FloatingBubbles from "./FloatingBubbles";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -17,7 +16,9 @@ export default function Hero() {
       id="home"
       className="min-h-screen flex flex-col items-center justify-center px-6 md:px-20 max-w-7xl mx-auto bg-transparent relative overflow-hidden pt-32 pb-20"
     >
-      <FloatingBubbles count={40} />
+      <div className="red-glow-center"></div>
+      <div className="hero-horizon-glow"></div>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -78,14 +79,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Horizon Glow */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [0.5, 0.8, 0.5] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-0 left-0 right-0 h-96 bg-horizon-glow pointer-events-none"
-      />
-
       {/* Bottom Decoration */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -93,7 +86,9 @@ export default function Hero() {
         transition={{ delay: 1.5 }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce z-10"
       >
-        <ChevronDown className="w-6 h-6 text-slate-600" />
+        <Link href="#about" aria-label="Scroll to About section">
+          <ChevronDown className="w-6 h-6 text-zinc-500 hover:text-primary transition-colors cursor-pointer" />
+        </Link>
       </motion.div>
     </section>
   );

@@ -1,10 +1,9 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Hammer } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-import { motion } from "framer-motion";
-import FloatingBubbles from "./FloatingBubbles";
 
 export default function About() {
   return (
@@ -12,7 +11,6 @@ export default function About() {
       id="about"
       className="py-24 px-6 bg-transparent relative overflow-hidden"
     >
-      <FloatingBubbles count={30} />
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -1,6 +1,5 @@
 import React from "react";
 import { ExternalLink } from "lucide-react";
-import FloatingBubbles from "./FloatingBubbles";
 
 export default function Education() {
   const education = [
@@ -43,7 +42,6 @@ export default function Education() {
       id="education"
       className="py-24 px-6 relative bg-transparent overflow-hidden"
     >
-      <FloatingBubbles count={20} />
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-20 space-y-4">
           <h2 className="text-5xl font-black text-white tracking-tight">

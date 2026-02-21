@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Cloud, Code2 } from "lucide-react";
 import Image from "next/image";
-import FloatingBubbles from "./FloatingBubbles";
 
 const skillCategories = [
   {
@@ -32,7 +31,7 @@ const skillCategories = [
       },
       {
         name: "Next.js",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+        icon: "https://cdn.simpleicons.org/nextdotjs/white",
       },
       {
         name: "NestJS",
@@ -44,7 +43,7 @@ const skillCategories = [
       },
       {
         name: "Express",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+        icon: "https://cdn.simpleicons.org/express/white",
       },
       {
         name: "Tailwind CSS",
@@ -94,7 +93,7 @@ const skillCategories = [
       },
       {
         name: "GitHub",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+        icon: "https://cdn.simpleicons.org/github/white",
       },
       {
         name: "GitHub Actions",
@@ -118,7 +117,6 @@ export default function Skills() {
       id="skills"
       className="py-24 px-6 relative bg-transparent overflow-hidden"
     >
-      <FloatingBubbles count={30} />
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

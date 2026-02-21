@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="py-6 px-6 bg-transparent">
       <div className="max-w-6xl mx-auto border-t border-slate-900 pt-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="text-slate-500 font-medium text-sm">
-          © {new Date().getFullYear()} Krish Patel. All rights reserved.
+          © {new Date().getFullYear()} Krish Sangani. All rights reserved.
         </div>
 
         <div className="flex items-center gap-6">

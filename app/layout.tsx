@@ -14,8 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Unique Portfolio",
-  description: "A wonderful and professional portfolio.",
+  title: "Krish Sangani | Fullstack Developer",
+  description:
+    "Seasoned Fullstack Developer specializing in building robust and scalable web applications with pixel-perfect frontends.",
+  icons: {
+    icon: "/ks-favicon.svg",
+  },
 };
 
 export default function RootLayout({

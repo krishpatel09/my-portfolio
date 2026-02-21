@@ -17,7 +17,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 px-8 py-3 flex items-center gap-12 bg-[#171719] backdrop-blur-2xl border border-white/5 rounded-4xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-      <div className="text-2xl font-black tracking-tighter text-white flex items-center gap-0 mr-4">
+      <div className="text-2xl font-black tracking-tighter text-white flex items-center gap-0 mr-4 cursor-default">
         Krish<span className="text-primary">.</span>
       </div>
 
