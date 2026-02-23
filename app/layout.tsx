@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import BackgroundNoise from "@/components/BackgroundNoise";
+import StructuredData from "@/components/StructuredData";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,9 +17,31 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Krish Sangani | Fullstack Developer",
   description:
-    "Seasoned Fullstack Developer specializing in building robust and scalable web applications with pixel-perfect frontends.",
+    "Seasoned Fullstack Developer specializing in building robust and scalable web applications with pixel-perfect frontends. Expert in Next.js, React, and TypeScript.",
+  keywords: [
+    "Krish Sangani",
+    "Fullstack Developer",
+    "Web Developer",
+    "Portfolio",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript",
+    "Frontend Engineer",
+    "Backend Developer",
+  ],
+  authors: [{ name: "Krish Sangani" }],
+  creator: "Krish Sangani",
   icons: {
     icon: "/ks-favicon.svg",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://krishai.me",
+    title: "Krish Sangani | Fullstack Developer",
+    description:
+      "Expert Fullstack Developer building high-performance web applications using modern technologies like Next.js, React, and Node.js.",
+    siteName: "Krish Sangani Portfolio",
   },
 };
 
@@ -32,6 +55,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen relative selection:bg-[#6366F1]/30 selection:text-[#6366F1]`}
       >
+        <StructuredData />
         <BackgroundNoise />
         <main className="relative z-10">{children}</main>
       </body>
