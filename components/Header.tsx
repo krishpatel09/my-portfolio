@@ -36,13 +36,6 @@ export default function Header() {
             {link.name}
           </Link>
         ))}
-        <Link
-          href="/resume.pdf"
-          target="_blank"
-          className="text-[13px] font-bold text-primary hover:text-primary/80 transition-colors px-4 py-2 ml-2"
-        >
-          Resume
-        </Link>
       </nav>
     </header>
   );

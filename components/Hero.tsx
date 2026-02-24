@@ -5,6 +5,7 @@ import {
   FileText,
   ChevronDown,
   MousePointerClick,
+  ExternalLink,
 } from "lucide-react";
 import React from "react";
 import { motion } from "framer-motion";
@@ -67,14 +68,20 @@ export default function Hero() {
               <MousePointerClick className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </motion.button>
 
-            <motion.button
+            <motion.a
+              href="https://cfpfyksblpnobqaqfqsr.supabase.co/storage/v1/object/public/portfolio-assets/Krish-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-slate-900 text-slate-300 border border-slate-800 rounded-2xl font-bold text-lg hover:border-primary/30 transition-all flex items-center gap-2 group"
             >
-              <FileText className="w-5 h-5 text-slate-500 group-hover:text-primary transition-colors" />
               Resume
-            </motion.button>
+              <ExternalLink
+                size={18}
+                className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+              />
+            </motion.a>
           </div>
         </motion.div>
       </motion.div>

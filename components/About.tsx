@@ -37,23 +37,15 @@ export default function About() {
             className="lg:col-span-5 relative group"
           >
             <div className="aspect-4/5 rounded-4xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl relative transition-all duration-500 group-hover:border-primary/30">
-              <div className="absolute inset-0 bg-slate-200 flex items-center justify-center">
-                <span className="text-slate-400 font-bold text-xl font-mono">
-                  KRISH_PATEL.JPG
-                </span>
-                <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent"></div>
-              </div>
-              {/* Optional: Add background image when available */}
-              {/* <Image 
-                src="/about-portrait.jpg" 
+              <Image
+                src="/krish-image.png"
                 alt="Krish Patel"
                 fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-700" 
-              /> */}
+                className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              />
               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/80 to-transparent"></div>
             </div>
 
-            {/* Visual Flair */}
             <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all"></div>
           </motion.div>
 
